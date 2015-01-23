@@ -1,0 +1,22 @@
+<h1>School's not for fools</h1>
+
+<p>Department Directory:</p>
+
+<form action="/departments" method="post">
+  <label for="name">Add a Department:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add Department</button>
+</form>
+
+<% if @departments.any?() %>
+  <p>Click on a list to see its tasks:</p>
+
+  <ul>
+    <% @departments.each do |department| %>
+      <li><a href="/departments/<%= department.id() %>"><%= department.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no departments...yet!</p>
+<% end %>

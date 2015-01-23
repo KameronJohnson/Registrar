@@ -23,6 +23,23 @@ class Course
       courses
   end
 
+  # define_method(:get_students)
+  #   get_students = DB.exec("SELECT student_id FROM students")
+  #   students = []
+  #   get_students.each() do |student|
+  #     student_id = student.fetch("student_id")
+  #     students.push()
+
+  define_singleton_method(:course_find) do |id|
+    found_course = nil
+    Course.all().each() do |course|
+      if course.course_id().==(id)
+        found_course = course
+      end
+    end
+    found_course
+  end
+
   define_method(:==) do |another_course|
     self.course_name().==(another_course.course_name()).&(self.course_id().==(another_course.course_id()))
   end

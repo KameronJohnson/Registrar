@@ -23,6 +23,17 @@ class Student
       students
   end
 
+  define_singleton_method(:student_find) do |id|
+    found_student = nil
+    Student.all().each() do |student|
+      if student.student_id().==(id)
+        found_student = student
+      end
+    end
+    found_student
+  end
+
+
   define_method(:==) do |another_student|
     self.student_name().==(another_student.student_name()).&(self.student_id().==(another_student.student_id()))
   end
